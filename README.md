@@ -5,4 +5,4 @@ Requires Kinect2.0 SDK
 
 Description Coming Soon as part of Submission to JNE
 
-If you have questions regarding this project, please contact me at tlibey<at>uw<dot>edu
+If you have questions regarding this project, please contact me at tlibey at uw dot edu

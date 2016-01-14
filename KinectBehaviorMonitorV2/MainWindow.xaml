@@ -10,9 +10,9 @@
 
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="DepthDiff" Margin="10,10,0,0" FontSize="32" Width="100" />
+                <TextBlock x:Name="DepthDiff" Margin="10,10,0,0" FontSize="32" Width="228" />
                 <TextBlock x:Name="TimeElapsed" Margin="10,10,0,0" FontSize="32"  Width="300"/>
-                <TextBlock x:Name="Counter" Margin="10,10,0,0" FontSize="32"  Width="150"/>
+                <TextBlock x:Name="Counter" Margin="10,10,0,0" FontSize="32"  Width="150">0 Events</TextBlock>
                 <TextBlock x:Name="DebugTest" Width="50"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

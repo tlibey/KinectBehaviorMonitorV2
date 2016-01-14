@@ -509,7 +509,7 @@ namespace KinectBehaviorMonitorV2
 
             this.DepthDiff.Dispatcher.BeginInvoke(new Action(() =>
             {
-                DepthDiff.Text = string.Format("{0} mm", iMovementValue);
+                DepthDiff.Text = string.Format("GMV: {0}", iMovementValue);
             }));
 
             
@@ -526,7 +526,9 @@ namespace KinectBehaviorMonitorV2
             TimeSpan elapsed = DateTime.Now.Subtract(timeStart);
             this.TimeElapsed.Dispatcher.BeginInvoke(new Action(() =>
             {
-                TimeElapsed.Text = string.Format("{0} s", elapsed.TotalSeconds);
+                int s = (int)elapsed.TotalSeconds;
+                int ds = (int)(elapsed.TotalSeconds*10 % 10);
+                TimeElapsed.Text = "elapsed: " + s.ToString() + "."+ds.ToString() +"s";
             }));
 
             double currentTimeElapsed = Math.Floor(elapsed.TotalSeconds);

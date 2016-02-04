@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 namespace KinectBehaviorMonitorV2
 {
+    /// <summary>
+    /// handles file directory creation and file saving functionality 
+    /// File names are statically set here for simplicity but could be set to relative paths '../Data/' etc
+    /// 
+    /// </summary>
     class KinectBehavior_FileHandler
     {
         static string CoreFileName = @"C:/MoveCalc/BetaMonitoring/";
@@ -19,6 +24,8 @@ namespace KinectBehaviorMonitorV2
         string TITOfileName = CoreFileNameThis + "/TITOtimeStamps.txt";
         string depthImgfileNameDir = CoreFileNameThis + "/depthImages/";
 
+
+        //Called by mainwindow.xampl.cs to initialize the above directories (creates them if they do not exist) and load the settings file to preset settings values
        public int[] InitializeFileStructure()
         {
             int[] readValues = new int[10];
@@ -44,30 +51,22 @@ namespace KinectBehaviorMonitorV2
                 {
                     string thisLine;
                     int index = 0;
-                    while ((thisLine = sr.ReadLine()) != null) {
+                    while ((thisLine = sr.ReadLine()) != null)
+                    {
                         readValues[index] = Convert.ToInt16(thisLine);
                         index++;
-
                     }
                 }
-                
             }
             else
             {
 
                 Console.WriteLine("No recent settings");
             }
-
-           /*
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(movementfileName, true))
-            { file.WriteLine("Time,Movement");  }
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(eventTimesfileName, true))
-            { file.WriteLine("Time,EventType"); }
-           */
-
             return readValues;
-
         }
+
+        //general get functions called by various functions within mainwindow.xaml.cs
        public string getCoreFileName()
        {
            return CoreFileNameThis;
@@ -77,6 +76,8 @@ namespace KinectBehaviorMonitorV2
        {
            return depthImgfileNameDir;
        }
+
+        //save data functions called from within gmv calculations and port handler functions
        public void SaveMovementData(double time, double moveVal)
        {
            using (System.IO.StreamWriter file = new System.IO.StreamWriter(movementfileName, true))
@@ -130,6 +131,7 @@ namespace KinectBehaviorMonitorV2
        public string getMovementFileName() { return movementfileName; }
 
 
+        //button call from UI (saves current settings to file)
        public void saveSettings(int[] settings)
        {
 
